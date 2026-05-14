@@ -1,4 +1,4 @@
-const ProdutoService = require('../service/ProdutoService')
+const ProdutoService = require('../services/ProdutoService')
 
 class ProdutoController{
 

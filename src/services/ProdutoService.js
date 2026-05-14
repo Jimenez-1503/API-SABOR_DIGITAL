@@ -1,6 +1,6 @@
 //Faz as regras de negócio
 
-const ProdutoRepository = require('../repositores/ProdutoRepository')
+const ProdutoRepository = require('../repositories/ProdutoRepository')
 
 class ProdutoService {
     async listarProdutos(){
