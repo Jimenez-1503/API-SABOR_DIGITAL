@@ -1,12 +1,12 @@
 const pool = require('../config/database');
 
 class CardapioRepository {
-    async findAll() {
+    async listarCardapio() {
         const [rows] = await pool.query('SELECT * FROM cardapio ORDER BY id DESC');
         return rows;
     }
 
-    async findById(id) {
+    async buscarCardapioPorId(id) {
         const [cardapioRows] = await pool.query('SELECT * FROM cardapio WHERE id = ?', [id]);
         if (cardapioRows.length === 0) return null;
 
@@ -22,7 +22,7 @@ class CardapioRepository {
         return cardapio;
     }
 
-    async create(cardapioData, produtosIds) {
+    async criarCardapio(cardapioData, produtosIds) {
         const { nome, descricao, disponivel } = cardapioData;
         const connection = await pool.getConnection(); // Obtém conexão exclusiva para a transação
         try {
@@ -52,7 +52,7 @@ class CardapioRepository {
         }
     }
 
-    async update(id, cardapioData) {
+    async atualizarCardapio(id, cardapioData) {
         const fields = [];
         const values = [];
         for (const [key, value] of Object.entries(cardapioData)) {
@@ -67,7 +67,7 @@ class CardapioRepository {
         return result.affectedRows;
     }
 
-    async delete(id) {
+    async deletarCardapio(id) {
         const [result] = await pool.query('DELETE FROM cardapio WHERE id = ?', [id]);
         return result.affectedRows;
     }

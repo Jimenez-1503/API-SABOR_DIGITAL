@@ -1,12 +1,12 @@
 const pool = require('../config/database');
 
 class PedidoRepository {
-    async findAll() {
+    async listaPedido() {
         const [rows] = await pool.query('SELECT * FROM pedido ORDER BY criado_em DESC');
         return rows;
     }
 
-    async findById(id) {
+    async buscarProdutoPorId(id) {
         // Busca o pedido
         const [pedidoRows] = await pool.query('SELECT * FROM pedido WHERE id = ?', [id]);
         if (pedidoRows.length === 0) return null;
@@ -25,7 +25,7 @@ class PedidoRepository {
         return pedido;
     }
 
-    async create(pedidoData, itens) {
+    async criarPedido(pedidoData, itens) {
         const { cliente, status, total } = pedidoData;
         const connection = await pool.getConnection();
 
@@ -62,7 +62,7 @@ class PedidoRepository {
         }
     }
 
-    async update(id, pedidoData) {
+    async atualizarPedido(id, pedidoData) {
         const fields = [];
         const values = [];
         for (const [key, value] of Object.entries(pedidoData)) {
@@ -77,7 +77,7 @@ class PedidoRepository {
         return result.affectedRows;
     }
 
-    async delete(id) {
+    async deletarPedido(id) {
         const [result] = await pool.query('DELETE FROM pedido WHERE id = ?', [id]);
         return result.affectedRows;
     }

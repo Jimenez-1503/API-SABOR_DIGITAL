@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const produtoRoutes = require('./ProdutoRoutes') //o index vai trabalhar com o routes
+const pedidoRoutes = require('./pedidoRoutes')
+const cardapioRoutes = require('./cardapioRoutes')
 
 router.get('/', (req, res) =>{
     res.json({
@@ -10,7 +12,7 @@ router.get('/', (req, res) =>{
 })
 
 router.use('/produtos', produtoRoutes)
-// router.use('/pedidos', pedidosRoutes)
-// router.use('/cardapios', cardapiosRoutes)
+router.use('/pedidos', pedidoRoutes)
+router.use('cardapios', cardapioRoutes)
 
 module.exports = router;

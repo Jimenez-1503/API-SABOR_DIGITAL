@@ -27,7 +27,7 @@ class CardapioController {
         }
     }
 
-    async cadastrarNoCardapio(req, res) {
+    async cadastroCardapio(req, res) {
         try {
             const resultado = await CardapioService.cadastrarCardapio(req.body);
             res.status(201).json(resultado);
@@ -40,7 +40,7 @@ class CardapioController {
         }
     }
 
-    async deletar(req, res) {
+    async removerCardapio(req, res) {
         try {
             const resultado = await CardapioService.deletarCardapio(req.params.id);
             res.json(resultado);

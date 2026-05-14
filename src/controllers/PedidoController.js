@@ -32,7 +32,7 @@ class PedidoController {
         }
     }
 
-    async atualizarPedido(req, res) {
+    async atualizarStatusPedido(req, res) {
         try {
             const id = req.params.id;
             const { status } = req.body;

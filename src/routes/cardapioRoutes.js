@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const CardapioController = require('../controllers/CardapioController');
 
-router.get('/', CardapioController.listar);
-router.get('/:id', CardapioController.buscarPorId);
-router.post('/', CardapioController.cadastrar);
-router.delete('/:id', CardapioController.deletar);
+router.get('/', CardapioController.listarCardapio);
+router.get('/:id', CardapioController.buscarCardapioPorId);
+router.post('/', CardapioController.cadastroCardapio);
+router.delete('/:id', CardapioController.removerCardapio);
 
 module.exports = router;

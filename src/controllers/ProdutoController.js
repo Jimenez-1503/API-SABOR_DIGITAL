@@ -44,7 +44,7 @@ class ProdutoController{
         }
     }
 
-    async atualizarProduto(req, res){
+    async atualizacaoProduto(req, res){
         try{
             const resultado = await ProdutoService.atualizarProduto(req.params.id, req.body)
             res.json(resultado)
@@ -52,21 +52,21 @@ class ProdutoController{
         }catch(erro){
             res.status(500).json({ //res.status(erro ou 500)
                 status: false,
-                mensagem: erro.mensagem, // 'Erro interno no servidor'[
+                mensagem: erro.mensagem, // 'Erro interno no servidor'
                 erro: erro.stack // erro
             })
 
         }
     }
 
-    async deletarProduto(req, res){
+    async removerProduto(req, res){
         try{
             const resultado = await ProdutoService.deletarProduto(req.params.id)
             res.json(resultado)
         }catch(erro){
             res.status(500).json({ //res.status(erro ou 500)
                 status: false,
-                mensagem: erro.mensagem, // 'Erro interno no servidor'[
+                mensagem: erro.mensagem, // 'Erro interno no servidor'
                 erro: erro.stack // erro
             })
 
